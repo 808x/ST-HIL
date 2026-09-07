@@ -7,7 +7,7 @@
 
 ## Demo preview
 
-![Helium concentration contour](fluent_udf/helium_smooth_constant.mp4)
+![Helium-air mixing elbow contour](fluent_udf/helium_smooth_constant.gif)
 
 *Helium-air mixing elbow contour — outlet helium mass fraction is mapped to a 0–255 sensor byte (`SENSOR_MAX=0.2`, so `STHIL_SETPOINT=100` ≈ Y_he 7.8%, or ~39% of sensor saturation). A PI controller raises inlet valve duty when the filtered sensor exceeds the setpoint (slew-limited, clamped 0–255). The image shows full-open state (duty 255) because the outlet area-averaged sensor reads near zero at frame-decision time. The video looks jittery at the start because the adaptive frame-dropping threshold skips frames when change is low; it smooths out toward the final seconds as dynamics stabilize.*
 

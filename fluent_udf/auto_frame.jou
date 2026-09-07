@@ -1,0 +1,8 @@
+/file/confirm-overwrite? no
+/preferences/graphics/enable-non-object-based-workflow yes
+/display/set/picture/driver png
+/display/set/picture/x-resolution 1280
+/display/set/picture/y-resolution 720
+; auto-frame time_step=500 iter=5000 y=0.37376 duty=0
+/display/contour he 0 1
+/display/save-picture /home/nulltype/Projects/ST-HIL/fluent_udf/frames/helium_adaptive_0500.png

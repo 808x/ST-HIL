@@ -1,0 +1,1029 @@
+; Fluent 2D journal: 500-step HIL loop without graphics export.
+; The UDF still writes auto_frame.jou each iteration, but it is not read here
+; because /display/save-picture is not functional with the null driver.
+; Run: QT_QPA_PLATFORM=offscreen fluent 2d -t4 -driver null -i animate_hil_nogfx.jou
+/file/set-tui-version "26.1"
+chdir /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf
+
+file/read-case /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/elbow_hil_ready.cas.h5
+/define/user-defined/compiled-functions/load /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/libudf
+
+/define/user-defined/function-hooks/adjust
+fpga_feedback_loop::libudf
+""
+
+/define/user-defined/function-hooks/execute-at-end
+write_adaptive_frame::libudf
+""
+
+define/models/unsteady-1st-order? yes
+solve/set/transient-controls/time-step-size 0.01
+solve/set/transient-controls/number-of-time-steps 1
+
+solve/initialize/hyb-initialization
+
+; --- 500 time steps ---
+; --- step 1 ---
+solve/dual-time-iterate 1 10
+; --- step 2 ---
+solve/dual-time-iterate 1 10
+; --- step 3 ---
+solve/dual-time-iterate 1 10
+; --- step 4 ---
+solve/dual-time-iterate 1 10
+; --- step 5 ---
+solve/dual-time-iterate 1 10
+; --- step 6 ---
+solve/dual-time-iterate 1 10
+; --- step 7 ---
+solve/dual-time-iterate 1 10
+; --- step 8 ---
+solve/dual-time-iterate 1 10
+; --- step 9 ---
+solve/dual-time-iterate 1 10
+; --- step 10 ---
+solve/dual-time-iterate 1 10
+; --- step 11 ---
+solve/dual-time-iterate 1 10
+; --- step 12 ---
+solve/dual-time-iterate 1 10
+; --- step 13 ---
+solve/dual-time-iterate 1 10
+; --- step 14 ---
+solve/dual-time-iterate 1 10
+; --- step 15 ---
+solve/dual-time-iterate 1 10
+; --- step 16 ---
+solve/dual-time-iterate 1 10
+; --- step 17 ---
+solve/dual-time-iterate 1 10
+; --- step 18 ---
+solve/dual-time-iterate 1 10
+; --- step 19 ---
+solve/dual-time-iterate 1 10
+; --- step 20 ---
+solve/dual-time-iterate 1 10
+; --- step 21 ---
+solve/dual-time-iterate 1 10
+; --- step 22 ---
+solve/dual-time-iterate 1 10
+; --- step 23 ---
+solve/dual-time-iterate 1 10
+; --- step 24 ---
+solve/dual-time-iterate 1 10
+; --- step 25 ---
+solve/dual-time-iterate 1 10
+; --- step 26 ---
+solve/dual-time-iterate 1 10
+; --- step 27 ---
+solve/dual-time-iterate 1 10
+; --- step 28 ---
+solve/dual-time-iterate 1 10
+; --- step 29 ---
+solve/dual-time-iterate 1 10
+; --- step 30 ---
+solve/dual-time-iterate 1 10
+; --- step 31 ---
+solve/dual-time-iterate 1 10
+; --- step 32 ---
+solve/dual-time-iterate 1 10
+; --- step 33 ---
+solve/dual-time-iterate 1 10
+; --- step 34 ---
+solve/dual-time-iterate 1 10
+; --- step 35 ---
+solve/dual-time-iterate 1 10
+; --- step 36 ---
+solve/dual-time-iterate 1 10
+; --- step 37 ---
+solve/dual-time-iterate 1 10
+; --- step 38 ---
+solve/dual-time-iterate 1 10
+; --- step 39 ---
+solve/dual-time-iterate 1 10
+; --- step 40 ---
+solve/dual-time-iterate 1 10
+; --- step 41 ---
+solve/dual-time-iterate 1 10
+; --- step 42 ---
+solve/dual-time-iterate 1 10
+; --- step 43 ---
+solve/dual-time-iterate 1 10
+; --- step 44 ---
+solve/dual-time-iterate 1 10
+; --- step 45 ---
+solve/dual-time-iterate 1 10
+; --- step 46 ---
+solve/dual-time-iterate 1 10
+; --- step 47 ---
+solve/dual-time-iterate 1 10
+; --- step 48 ---
+solve/dual-time-iterate 1 10
+; --- step 49 ---
+solve/dual-time-iterate 1 10
+; --- step 50 ---
+solve/dual-time-iterate 1 10
+; --- step 51 ---
+solve/dual-time-iterate 1 10
+; --- step 52 ---
+solve/dual-time-iterate 1 10
+; --- step 53 ---
+solve/dual-time-iterate 1 10
+; --- step 54 ---
+solve/dual-time-iterate 1 10
+; --- step 55 ---
+solve/dual-time-iterate 1 10
+; --- step 56 ---
+solve/dual-time-iterate 1 10
+; --- step 57 ---
+solve/dual-time-iterate 1 10
+; --- step 58 ---
+solve/dual-time-iterate 1 10
+; --- step 59 ---
+solve/dual-time-iterate 1 10
+; --- step 60 ---
+solve/dual-time-iterate 1 10
+; --- step 61 ---
+solve/dual-time-iterate 1 10
+; --- step 62 ---
+solve/dual-time-iterate 1 10
+; --- step 63 ---
+solve/dual-time-iterate 1 10
+; --- step 64 ---
+solve/dual-time-iterate 1 10
+; --- step 65 ---
+solve/dual-time-iterate 1 10
+; --- step 66 ---
+solve/dual-time-iterate 1 10
+; --- step 67 ---
+solve/dual-time-iterate 1 10
+; --- step 68 ---
+solve/dual-time-iterate 1 10
+; --- step 69 ---
+solve/dual-time-iterate 1 10
+; --- step 70 ---
+solve/dual-time-iterate 1 10
+; --- step 71 ---
+solve/dual-time-iterate 1 10
+; --- step 72 ---
+solve/dual-time-iterate 1 10
+; --- step 73 ---
+solve/dual-time-iterate 1 10
+; --- step 74 ---
+solve/dual-time-iterate 1 10
+; --- step 75 ---
+solve/dual-time-iterate 1 10
+; --- step 76 ---
+solve/dual-time-iterate 1 10
+; --- step 77 ---
+solve/dual-time-iterate 1 10
+; --- step 78 ---
+solve/dual-time-iterate 1 10
+; --- step 79 ---
+solve/dual-time-iterate 1 10
+; --- step 80 ---
+solve/dual-time-iterate 1 10
+; --- step 81 ---
+solve/dual-time-iterate 1 10
+; --- step 82 ---
+solve/dual-time-iterate 1 10
+; --- step 83 ---
+solve/dual-time-iterate 1 10
+; --- step 84 ---
+solve/dual-time-iterate 1 10
+; --- step 85 ---
+solve/dual-time-iterate 1 10
+; --- step 86 ---
+solve/dual-time-iterate 1 10
+; --- step 87 ---
+solve/dual-time-iterate 1 10
+; --- step 88 ---
+solve/dual-time-iterate 1 10
+; --- step 89 ---
+solve/dual-time-iterate 1 10
+; --- step 90 ---
+solve/dual-time-iterate 1 10
+; --- step 91 ---
+solve/dual-time-iterate 1 10
+; --- step 92 ---
+solve/dual-time-iterate 1 10
+; --- step 93 ---
+solve/dual-time-iterate 1 10
+; --- step 94 ---
+solve/dual-time-iterate 1 10
+; --- step 95 ---
+solve/dual-time-iterate 1 10
+; --- step 96 ---
+solve/dual-time-iterate 1 10
+; --- step 97 ---
+solve/dual-time-iterate 1 10
+; --- step 98 ---
+solve/dual-time-iterate 1 10
+; --- step 99 ---
+solve/dual-time-iterate 1 10
+; --- step 100 ---
+solve/dual-time-iterate 1 10
+; --- step 101 ---
+solve/dual-time-iterate 1 10
+; --- step 102 ---
+solve/dual-time-iterate 1 10
+; --- step 103 ---
+solve/dual-time-iterate 1 10
+; --- step 104 ---
+solve/dual-time-iterate 1 10
+; --- step 105 ---
+solve/dual-time-iterate 1 10
+; --- step 106 ---
+solve/dual-time-iterate 1 10
+; --- step 107 ---
+solve/dual-time-iterate 1 10
+; --- step 108 ---
+solve/dual-time-iterate 1 10
+; --- step 109 ---
+solve/dual-time-iterate 1 10
+; --- step 110 ---
+solve/dual-time-iterate 1 10
+; --- step 111 ---
+solve/dual-time-iterate 1 10
+; --- step 112 ---
+solve/dual-time-iterate 1 10
+; --- step 113 ---
+solve/dual-time-iterate 1 10
+; --- step 114 ---
+solve/dual-time-iterate 1 10
+; --- step 115 ---
+solve/dual-time-iterate 1 10
+; --- step 116 ---
+solve/dual-time-iterate 1 10
+; --- step 117 ---
+solve/dual-time-iterate 1 10
+; --- step 118 ---
+solve/dual-time-iterate 1 10
+; --- step 119 ---
+solve/dual-time-iterate 1 10
+; --- step 120 ---
+solve/dual-time-iterate 1 10
+; --- step 121 ---
+solve/dual-time-iterate 1 10
+; --- step 122 ---
+solve/dual-time-iterate 1 10
+; --- step 123 ---
+solve/dual-time-iterate 1 10
+; --- step 124 ---
+solve/dual-time-iterate 1 10
+; --- step 125 ---
+solve/dual-time-iterate 1 10
+; --- step 126 ---
+solve/dual-time-iterate 1 10
+; --- step 127 ---
+solve/dual-time-iterate 1 10
+; --- step 128 ---
+solve/dual-time-iterate 1 10
+; --- step 129 ---
+solve/dual-time-iterate 1 10
+; --- step 130 ---
+solve/dual-time-iterate 1 10
+; --- step 131 ---
+solve/dual-time-iterate 1 10
+; --- step 132 ---
+solve/dual-time-iterate 1 10
+; --- step 133 ---
+solve/dual-time-iterate 1 10
+; --- step 134 ---
+solve/dual-time-iterate 1 10
+; --- step 135 ---
+solve/dual-time-iterate 1 10
+; --- step 136 ---
+solve/dual-time-iterate 1 10
+; --- step 137 ---
+solve/dual-time-iterate 1 10
+; --- step 138 ---
+solve/dual-time-iterate 1 10
+; --- step 139 ---
+solve/dual-time-iterate 1 10
+; --- step 140 ---
+solve/dual-time-iterate 1 10
+; --- step 141 ---
+solve/dual-time-iterate 1 10
+; --- step 142 ---
+solve/dual-time-iterate 1 10
+; --- step 143 ---
+solve/dual-time-iterate 1 10
+; --- step 144 ---
+solve/dual-time-iterate 1 10
+; --- step 145 ---
+solve/dual-time-iterate 1 10
+; --- step 146 ---
+solve/dual-time-iterate 1 10
+; --- step 147 ---
+solve/dual-time-iterate 1 10
+; --- step 148 ---
+solve/dual-time-iterate 1 10
+; --- step 149 ---
+solve/dual-time-iterate 1 10
+; --- step 150 ---
+solve/dual-time-iterate 1 10
+; --- step 151 ---
+solve/dual-time-iterate 1 10
+; --- step 152 ---
+solve/dual-time-iterate 1 10
+; --- step 153 ---
+solve/dual-time-iterate 1 10
+; --- step 154 ---
+solve/dual-time-iterate 1 10
+; --- step 155 ---
+solve/dual-time-iterate 1 10
+; --- step 156 ---
+solve/dual-time-iterate 1 10
+; --- step 157 ---
+solve/dual-time-iterate 1 10
+; --- step 158 ---
+solve/dual-time-iterate 1 10
+; --- step 159 ---
+solve/dual-time-iterate 1 10
+; --- step 160 ---
+solve/dual-time-iterate 1 10
+; --- step 161 ---
+solve/dual-time-iterate 1 10
+; --- step 162 ---
+solve/dual-time-iterate 1 10
+; --- step 163 ---
+solve/dual-time-iterate 1 10
+; --- step 164 ---
+solve/dual-time-iterate 1 10
+; --- step 165 ---
+solve/dual-time-iterate 1 10
+; --- step 166 ---
+solve/dual-time-iterate 1 10
+; --- step 167 ---
+solve/dual-time-iterate 1 10
+; --- step 168 ---
+solve/dual-time-iterate 1 10
+; --- step 169 ---
+solve/dual-time-iterate 1 10
+; --- step 170 ---
+solve/dual-time-iterate 1 10
+; --- step 171 ---
+solve/dual-time-iterate 1 10
+; --- step 172 ---
+solve/dual-time-iterate 1 10
+; --- step 173 ---
+solve/dual-time-iterate 1 10
+; --- step 174 ---
+solve/dual-time-iterate 1 10
+; --- step 175 ---
+solve/dual-time-iterate 1 10
+; --- step 176 ---
+solve/dual-time-iterate 1 10
+; --- step 177 ---
+solve/dual-time-iterate 1 10
+; --- step 178 ---
+solve/dual-time-iterate 1 10
+; --- step 179 ---
+solve/dual-time-iterate 1 10
+; --- step 180 ---
+solve/dual-time-iterate 1 10
+; --- step 181 ---
+solve/dual-time-iterate 1 10
+; --- step 182 ---
+solve/dual-time-iterate 1 10
+; --- step 183 ---
+solve/dual-time-iterate 1 10
+; --- step 184 ---
+solve/dual-time-iterate 1 10
+; --- step 185 ---
+solve/dual-time-iterate 1 10
+; --- step 186 ---
+solve/dual-time-iterate 1 10
+; --- step 187 ---
+solve/dual-time-iterate 1 10
+; --- step 188 ---
+solve/dual-time-iterate 1 10
+; --- step 189 ---
+solve/dual-time-iterate 1 10
+; --- step 190 ---
+solve/dual-time-iterate 1 10
+; --- step 191 ---
+solve/dual-time-iterate 1 10
+; --- step 192 ---
+solve/dual-time-iterate 1 10
+; --- step 193 ---
+solve/dual-time-iterate 1 10
+; --- step 194 ---
+solve/dual-time-iterate 1 10
+; --- step 195 ---
+solve/dual-time-iterate 1 10
+; --- step 196 ---
+solve/dual-time-iterate 1 10
+; --- step 197 ---
+solve/dual-time-iterate 1 10
+; --- step 198 ---
+solve/dual-time-iterate 1 10
+; --- step 199 ---
+solve/dual-time-iterate 1 10
+; --- step 200 ---
+solve/dual-time-iterate 1 10
+; --- step 201 ---
+solve/dual-time-iterate 1 10
+; --- step 202 ---
+solve/dual-time-iterate 1 10
+; --- step 203 ---
+solve/dual-time-iterate 1 10
+; --- step 204 ---
+solve/dual-time-iterate 1 10
+; --- step 205 ---
+solve/dual-time-iterate 1 10
+; --- step 206 ---
+solve/dual-time-iterate 1 10
+; --- step 207 ---
+solve/dual-time-iterate 1 10
+; --- step 208 ---
+solve/dual-time-iterate 1 10
+; --- step 209 ---
+solve/dual-time-iterate 1 10
+; --- step 210 ---
+solve/dual-time-iterate 1 10
+; --- step 211 ---
+solve/dual-time-iterate 1 10
+; --- step 212 ---
+solve/dual-time-iterate 1 10
+; --- step 213 ---
+solve/dual-time-iterate 1 10
+; --- step 214 ---
+solve/dual-time-iterate 1 10
+; --- step 215 ---
+solve/dual-time-iterate 1 10
+; --- step 216 ---
+solve/dual-time-iterate 1 10
+; --- step 217 ---
+solve/dual-time-iterate 1 10
+; --- step 218 ---
+solve/dual-time-iterate 1 10
+; --- step 219 ---
+solve/dual-time-iterate 1 10
+; --- step 220 ---
+solve/dual-time-iterate 1 10
+; --- step 221 ---
+solve/dual-time-iterate 1 10
+; --- step 222 ---
+solve/dual-time-iterate 1 10
+; --- step 223 ---
+solve/dual-time-iterate 1 10
+; --- step 224 ---
+solve/dual-time-iterate 1 10
+; --- step 225 ---
+solve/dual-time-iterate 1 10
+; --- step 226 ---
+solve/dual-time-iterate 1 10
+; --- step 227 ---
+solve/dual-time-iterate 1 10
+; --- step 228 ---
+solve/dual-time-iterate 1 10
+; --- step 229 ---
+solve/dual-time-iterate 1 10
+; --- step 230 ---
+solve/dual-time-iterate 1 10
+; --- step 231 ---
+solve/dual-time-iterate 1 10
+; --- step 232 ---
+solve/dual-time-iterate 1 10
+; --- step 233 ---
+solve/dual-time-iterate 1 10
+; --- step 234 ---
+solve/dual-time-iterate 1 10
+; --- step 235 ---
+solve/dual-time-iterate 1 10
+; --- step 236 ---
+solve/dual-time-iterate 1 10
+; --- step 237 ---
+solve/dual-time-iterate 1 10
+; --- step 238 ---
+solve/dual-time-iterate 1 10
+; --- step 239 ---
+solve/dual-time-iterate 1 10
+; --- step 240 ---
+solve/dual-time-iterate 1 10
+; --- step 241 ---
+solve/dual-time-iterate 1 10
+; --- step 242 ---
+solve/dual-time-iterate 1 10
+; --- step 243 ---
+solve/dual-time-iterate 1 10
+; --- step 244 ---
+solve/dual-time-iterate 1 10
+; --- step 245 ---
+solve/dual-time-iterate 1 10
+; --- step 246 ---
+solve/dual-time-iterate 1 10
+; --- step 247 ---
+solve/dual-time-iterate 1 10
+; --- step 248 ---
+solve/dual-time-iterate 1 10
+; --- step 249 ---
+solve/dual-time-iterate 1 10
+; --- step 250 ---
+solve/dual-time-iterate 1 10
+; --- step 251 ---
+solve/dual-time-iterate 1 10
+; --- step 252 ---
+solve/dual-time-iterate 1 10
+; --- step 253 ---
+solve/dual-time-iterate 1 10
+; --- step 254 ---
+solve/dual-time-iterate 1 10
+; --- step 255 ---
+solve/dual-time-iterate 1 10
+; --- step 256 ---
+solve/dual-time-iterate 1 10
+; --- step 257 ---
+solve/dual-time-iterate 1 10
+; --- step 258 ---
+solve/dual-time-iterate 1 10
+; --- step 259 ---
+solve/dual-time-iterate 1 10
+; --- step 260 ---
+solve/dual-time-iterate 1 10
+; --- step 261 ---
+solve/dual-time-iterate 1 10
+; --- step 262 ---
+solve/dual-time-iterate 1 10
+; --- step 263 ---
+solve/dual-time-iterate 1 10
+; --- step 264 ---
+solve/dual-time-iterate 1 10
+; --- step 265 ---
+solve/dual-time-iterate 1 10
+; --- step 266 ---
+solve/dual-time-iterate 1 10
+; --- step 267 ---
+solve/dual-time-iterate 1 10
+; --- step 268 ---
+solve/dual-time-iterate 1 10
+; --- step 269 ---
+solve/dual-time-iterate 1 10
+; --- step 270 ---
+solve/dual-time-iterate 1 10
+; --- step 271 ---
+solve/dual-time-iterate 1 10
+; --- step 272 ---
+solve/dual-time-iterate 1 10
+; --- step 273 ---
+solve/dual-time-iterate 1 10
+; --- step 274 ---
+solve/dual-time-iterate 1 10
+; --- step 275 ---
+solve/dual-time-iterate 1 10
+; --- step 276 ---
+solve/dual-time-iterate 1 10
+; --- step 277 ---
+solve/dual-time-iterate 1 10
+; --- step 278 ---
+solve/dual-time-iterate 1 10
+; --- step 279 ---
+solve/dual-time-iterate 1 10
+; --- step 280 ---
+solve/dual-time-iterate 1 10
+; --- step 281 ---
+solve/dual-time-iterate 1 10
+; --- step 282 ---
+solve/dual-time-iterate 1 10
+; --- step 283 ---
+solve/dual-time-iterate 1 10
+; --- step 284 ---
+solve/dual-time-iterate 1 10
+; --- step 285 ---
+solve/dual-time-iterate 1 10
+; --- step 286 ---
+solve/dual-time-iterate 1 10
+; --- step 287 ---
+solve/dual-time-iterate 1 10
+; --- step 288 ---
+solve/dual-time-iterate 1 10
+; --- step 289 ---
+solve/dual-time-iterate 1 10
+; --- step 290 ---
+solve/dual-time-iterate 1 10
+; --- step 291 ---
+solve/dual-time-iterate 1 10
+; --- step 292 ---
+solve/dual-time-iterate 1 10
+; --- step 293 ---
+solve/dual-time-iterate 1 10
+; --- step 294 ---
+solve/dual-time-iterate 1 10
+; --- step 295 ---
+solve/dual-time-iterate 1 10
+; --- step 296 ---
+solve/dual-time-iterate 1 10
+; --- step 297 ---
+solve/dual-time-iterate 1 10
+; --- step 298 ---
+solve/dual-time-iterate 1 10
+; --- step 299 ---
+solve/dual-time-iterate 1 10
+; --- step 300 ---
+solve/dual-time-iterate 1 10
+; --- step 301 ---
+solve/dual-time-iterate 1 10
+; --- step 302 ---
+solve/dual-time-iterate 1 10
+; --- step 303 ---
+solve/dual-time-iterate 1 10
+; --- step 304 ---
+solve/dual-time-iterate 1 10
+; --- step 305 ---
+solve/dual-time-iterate 1 10
+; --- step 306 ---
+solve/dual-time-iterate 1 10
+; --- step 307 ---
+solve/dual-time-iterate 1 10
+; --- step 308 ---
+solve/dual-time-iterate 1 10
+; --- step 309 ---
+solve/dual-time-iterate 1 10
+; --- step 310 ---
+solve/dual-time-iterate 1 10
+; --- step 311 ---
+solve/dual-time-iterate 1 10
+; --- step 312 ---
+solve/dual-time-iterate 1 10
+; --- step 313 ---
+solve/dual-time-iterate 1 10
+; --- step 314 ---
+solve/dual-time-iterate 1 10
+; --- step 315 ---
+solve/dual-time-iterate 1 10
+; --- step 316 ---
+solve/dual-time-iterate 1 10
+; --- step 317 ---
+solve/dual-time-iterate 1 10
+; --- step 318 ---
+solve/dual-time-iterate 1 10
+; --- step 319 ---
+solve/dual-time-iterate 1 10
+; --- step 320 ---
+solve/dual-time-iterate 1 10
+; --- step 321 ---
+solve/dual-time-iterate 1 10
+; --- step 322 ---
+solve/dual-time-iterate 1 10
+; --- step 323 ---
+solve/dual-time-iterate 1 10
+; --- step 324 ---
+solve/dual-time-iterate 1 10
+; --- step 325 ---
+solve/dual-time-iterate 1 10
+; --- step 326 ---
+solve/dual-time-iterate 1 10
+; --- step 327 ---
+solve/dual-time-iterate 1 10
+; --- step 328 ---
+solve/dual-time-iterate 1 10
+; --- step 329 ---
+solve/dual-time-iterate 1 10
+; --- step 330 ---
+solve/dual-time-iterate 1 10
+; --- step 331 ---
+solve/dual-time-iterate 1 10
+; --- step 332 ---
+solve/dual-time-iterate 1 10
+; --- step 333 ---
+solve/dual-time-iterate 1 10
+; --- step 334 ---
+solve/dual-time-iterate 1 10
+; --- step 335 ---
+solve/dual-time-iterate 1 10
+; --- step 336 ---
+solve/dual-time-iterate 1 10
+; --- step 337 ---
+solve/dual-time-iterate 1 10
+; --- step 338 ---
+solve/dual-time-iterate 1 10
+; --- step 339 ---
+solve/dual-time-iterate 1 10
+; --- step 340 ---
+solve/dual-time-iterate 1 10
+; --- step 341 ---
+solve/dual-time-iterate 1 10
+; --- step 342 ---
+solve/dual-time-iterate 1 10
+; --- step 343 ---
+solve/dual-time-iterate 1 10
+; --- step 344 ---
+solve/dual-time-iterate 1 10
+; --- step 345 ---
+solve/dual-time-iterate 1 10
+; --- step 346 ---
+solve/dual-time-iterate 1 10
+; --- step 347 ---
+solve/dual-time-iterate 1 10
+; --- step 348 ---
+solve/dual-time-iterate 1 10
+; --- step 349 ---
+solve/dual-time-iterate 1 10
+; --- step 350 ---
+solve/dual-time-iterate 1 10
+; --- step 351 ---
+solve/dual-time-iterate 1 10
+; --- step 352 ---
+solve/dual-time-iterate 1 10
+; --- step 353 ---
+solve/dual-time-iterate 1 10
+; --- step 354 ---
+solve/dual-time-iterate 1 10
+; --- step 355 ---
+solve/dual-time-iterate 1 10
+; --- step 356 ---
+solve/dual-time-iterate 1 10
+; --- step 357 ---
+solve/dual-time-iterate 1 10
+; --- step 358 ---
+solve/dual-time-iterate 1 10
+; --- step 359 ---
+solve/dual-time-iterate 1 10
+; --- step 360 ---
+solve/dual-time-iterate 1 10
+; --- step 361 ---
+solve/dual-time-iterate 1 10
+; --- step 362 ---
+solve/dual-time-iterate 1 10
+; --- step 363 ---
+solve/dual-time-iterate 1 10
+; --- step 364 ---
+solve/dual-time-iterate 1 10
+; --- step 365 ---
+solve/dual-time-iterate 1 10
+; --- step 366 ---
+solve/dual-time-iterate 1 10
+; --- step 367 ---
+solve/dual-time-iterate 1 10
+; --- step 368 ---
+solve/dual-time-iterate 1 10
+; --- step 369 ---
+solve/dual-time-iterate 1 10
+; --- step 370 ---
+solve/dual-time-iterate 1 10
+; --- step 371 ---
+solve/dual-time-iterate 1 10
+; --- step 372 ---
+solve/dual-time-iterate 1 10
+; --- step 373 ---
+solve/dual-time-iterate 1 10
+; --- step 374 ---
+solve/dual-time-iterate 1 10
+; --- step 375 ---
+solve/dual-time-iterate 1 10
+; --- step 376 ---
+solve/dual-time-iterate 1 10
+; --- step 377 ---
+solve/dual-time-iterate 1 10
+; --- step 378 ---
+solve/dual-time-iterate 1 10
+; --- step 379 ---
+solve/dual-time-iterate 1 10
+; --- step 380 ---
+solve/dual-time-iterate 1 10
+; --- step 381 ---
+solve/dual-time-iterate 1 10
+; --- step 382 ---
+solve/dual-time-iterate 1 10
+; --- step 383 ---
+solve/dual-time-iterate 1 10
+; --- step 384 ---
+solve/dual-time-iterate 1 10
+; --- step 385 ---
+solve/dual-time-iterate 1 10
+; --- step 386 ---
+solve/dual-time-iterate 1 10
+; --- step 387 ---
+solve/dual-time-iterate 1 10
+; --- step 388 ---
+solve/dual-time-iterate 1 10
+; --- step 389 ---
+solve/dual-time-iterate 1 10
+; --- step 390 ---
+solve/dual-time-iterate 1 10
+; --- step 391 ---
+solve/dual-time-iterate 1 10
+; --- step 392 ---
+solve/dual-time-iterate 1 10
+; --- step 393 ---
+solve/dual-time-iterate 1 10
+; --- step 394 ---
+solve/dual-time-iterate 1 10
+; --- step 395 ---
+solve/dual-time-iterate 1 10
+; --- step 396 ---
+solve/dual-time-iterate 1 10
+; --- step 397 ---
+solve/dual-time-iterate 1 10
+; --- step 398 ---
+solve/dual-time-iterate 1 10
+; --- step 399 ---
+solve/dual-time-iterate 1 10
+; --- step 400 ---
+solve/dual-time-iterate 1 10
+; --- step 401 ---
+solve/dual-time-iterate 1 10
+; --- step 402 ---
+solve/dual-time-iterate 1 10
+; --- step 403 ---
+solve/dual-time-iterate 1 10
+; --- step 404 ---
+solve/dual-time-iterate 1 10
+; --- step 405 ---
+solve/dual-time-iterate 1 10
+; --- step 406 ---
+solve/dual-time-iterate 1 10
+; --- step 407 ---
+solve/dual-time-iterate 1 10
+; --- step 408 ---
+solve/dual-time-iterate 1 10
+; --- step 409 ---
+solve/dual-time-iterate 1 10
+; --- step 410 ---
+solve/dual-time-iterate 1 10
+; --- step 411 ---
+solve/dual-time-iterate 1 10
+; --- step 412 ---
+solve/dual-time-iterate 1 10
+; --- step 413 ---
+solve/dual-time-iterate 1 10
+; --- step 414 ---
+solve/dual-time-iterate 1 10
+; --- step 415 ---
+solve/dual-time-iterate 1 10
+; --- step 416 ---
+solve/dual-time-iterate 1 10
+; --- step 417 ---
+solve/dual-time-iterate 1 10
+; --- step 418 ---
+solve/dual-time-iterate 1 10
+; --- step 419 ---
+solve/dual-time-iterate 1 10
+; --- step 420 ---
+solve/dual-time-iterate 1 10
+; --- step 421 ---
+solve/dual-time-iterate 1 10
+; --- step 422 ---
+solve/dual-time-iterate 1 10
+; --- step 423 ---
+solve/dual-time-iterate 1 10
+; --- step 424 ---
+solve/dual-time-iterate 1 10
+; --- step 425 ---
+solve/dual-time-iterate 1 10
+; --- step 426 ---
+solve/dual-time-iterate 1 10
+; --- step 427 ---
+solve/dual-time-iterate 1 10
+; --- step 428 ---
+solve/dual-time-iterate 1 10
+; --- step 429 ---
+solve/dual-time-iterate 1 10
+; --- step 430 ---
+solve/dual-time-iterate 1 10
+; --- step 431 ---
+solve/dual-time-iterate 1 10
+; --- step 432 ---
+solve/dual-time-iterate 1 10
+; --- step 433 ---
+solve/dual-time-iterate 1 10
+; --- step 434 ---
+solve/dual-time-iterate 1 10
+; --- step 435 ---
+solve/dual-time-iterate 1 10
+; --- step 436 ---
+solve/dual-time-iterate 1 10
+; --- step 437 ---
+solve/dual-time-iterate 1 10
+; --- step 438 ---
+solve/dual-time-iterate 1 10
+; --- step 439 ---
+solve/dual-time-iterate 1 10
+; --- step 440 ---
+solve/dual-time-iterate 1 10
+; --- step 441 ---
+solve/dual-time-iterate 1 10
+; --- step 442 ---
+solve/dual-time-iterate 1 10
+; --- step 443 ---
+solve/dual-time-iterate 1 10
+; --- step 444 ---
+solve/dual-time-iterate 1 10
+; --- step 445 ---
+solve/dual-time-iterate 1 10
+; --- step 446 ---
+solve/dual-time-iterate 1 10
+; --- step 447 ---
+solve/dual-time-iterate 1 10
+; --- step 448 ---
+solve/dual-time-iterate 1 10
+; --- step 449 ---
+solve/dual-time-iterate 1 10
+; --- step 450 ---
+solve/dual-time-iterate 1 10
+; --- step 451 ---
+solve/dual-time-iterate 1 10
+; --- step 452 ---
+solve/dual-time-iterate 1 10
+; --- step 453 ---
+solve/dual-time-iterate 1 10
+; --- step 454 ---
+solve/dual-time-iterate 1 10
+; --- step 455 ---
+solve/dual-time-iterate 1 10
+; --- step 456 ---
+solve/dual-time-iterate 1 10
+; --- step 457 ---
+solve/dual-time-iterate 1 10
+; --- step 458 ---
+solve/dual-time-iterate 1 10
+; --- step 459 ---
+solve/dual-time-iterate 1 10
+; --- step 460 ---
+solve/dual-time-iterate 1 10
+; --- step 461 ---
+solve/dual-time-iterate 1 10
+; --- step 462 ---
+solve/dual-time-iterate 1 10
+; --- step 463 ---
+solve/dual-time-iterate 1 10
+; --- step 464 ---
+solve/dual-time-iterate 1 10
+; --- step 465 ---
+solve/dual-time-iterate 1 10
+; --- step 466 ---
+solve/dual-time-iterate 1 10
+; --- step 467 ---
+solve/dual-time-iterate 1 10
+; --- step 468 ---
+solve/dual-time-iterate 1 10
+; --- step 469 ---
+solve/dual-time-iterate 1 10
+; --- step 470 ---
+solve/dual-time-iterate 1 10
+; --- step 471 ---
+solve/dual-time-iterate 1 10
+; --- step 472 ---
+solve/dual-time-iterate 1 10
+; --- step 473 ---
+solve/dual-time-iterate 1 10
+; --- step 474 ---
+solve/dual-time-iterate 1 10
+; --- step 475 ---
+solve/dual-time-iterate 1 10
+; --- step 476 ---
+solve/dual-time-iterate 1 10
+; --- step 477 ---
+solve/dual-time-iterate 1 10
+; --- step 478 ---
+solve/dual-time-iterate 1 10
+; --- step 479 ---
+solve/dual-time-iterate 1 10
+; --- step 480 ---
+solve/dual-time-iterate 1 10
+; --- step 481 ---
+solve/dual-time-iterate 1 10
+; --- step 482 ---
+solve/dual-time-iterate 1 10
+; --- step 483 ---
+solve/dual-time-iterate 1 10
+; --- step 484 ---
+solve/dual-time-iterate 1 10
+; --- step 485 ---
+solve/dual-time-iterate 1 10
+; --- step 486 ---
+solve/dual-time-iterate 1 10
+; --- step 487 ---
+solve/dual-time-iterate 1 10
+; --- step 488 ---
+solve/dual-time-iterate 1 10
+; --- step 489 ---
+solve/dual-time-iterate 1 10
+; --- step 490 ---
+solve/dual-time-iterate 1 10
+; --- step 491 ---
+solve/dual-time-iterate 1 10
+; --- step 492 ---
+solve/dual-time-iterate 1 10
+; --- step 493 ---
+solve/dual-time-iterate 1 10
+; --- step 494 ---
+solve/dual-time-iterate 1 10
+; --- step 495 ---
+solve/dual-time-iterate 1 10
+; --- step 496 ---
+solve/dual-time-iterate 1 10
+; --- step 497 ---
+solve/dual-time-iterate 1 10
+; --- step 498 ---
+solve/dual-time-iterate 1 10
+; --- step 499 ---
+solve/dual-time-iterate 1 10
+; --- step 500 ---
+solve/dual-time-iterate 1 10
+
+/file/confirm-overwrite? no
+file/write-case-data /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/elbow_hil_smooth.cas.h5
+exit yes

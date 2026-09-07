@@ -1,0 +1,23 @@
+// Tang Nano 20K pin constraints
+// CLK: 27 MHz onboard oscillator
+IO_LOC "clk" 4;
+IO_PORT "clk" IO_TYPE=LVCMOS33;
+
+// UART to onboard BL702 debugger via USB-C
+IO_LOC "uart_rx" 70;
+IO_PORT "uart_rx" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "uart_tx" 69;
+IO_PORT "uart_tx" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+// Onboard user button S1 (KEY1) as manual override (active low when pressed)
+IO_LOC "button_n" 88;
+IO_PORT "button_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+// LED0: indicates active Helium injection (active low)
+IO_LOC "led_inject" 15;
+IO_PORT "led_inject" IO_TYPE=LVCMOS33;
+
+// LED1: indicates stopped state (active low)
+IO_LOC "led_stop" 16;
+IO_PORT "led_stop" IO_TYPE=LVCMOS33;

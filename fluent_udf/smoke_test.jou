@@ -1,0 +1,46 @@
+; Quick smoke test: load case, run 3 steps, save every frame.
+; Generated automatically by 2_simulate.sh --smoke.
+/file/set-tui-version "26.1"
+chdir /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf
+
+file/read-case /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/elbow_hil_ready.cas.h5
+/define/user-defined/compiled-functions/load /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/libudf
+
+/define/user-defined/function-hooks/adjust
+fpga_feedback_loop::libudf
+""
+
+/define/user-defined/function-hooks/execute-at-end
+write_adaptive_frame::libudf
+""
+
+define/models/unsteady-1st-order? yes
+solve/set/transient-controls/time-step-size 0.01
+solve/set/transient-controls/number-of-time-steps 1
+
+solve/initialize/hyb-initialization
+
+/preferences/graphics/enable-non-object-based-workflow yes
+/display/set/contours/filled-contours? yes
+/display/set/contours/n-contour 50
+/display/set/contours/auto-range? no
+/display/set/picture/driver png
+/display/set/picture/x-resolution 1280
+/display/set/picture/y-resolution 720
+
+/display/contour he 0 1
+/display/save-picture /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/frames/helium_adaptive_0000.png
+
+; --- step 1 ---
+solve/dual-time-iterate 1 10
+/file/read-journal /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/auto_frame.jou ()
+; --- step 2 ---
+solve/dual-time-iterate 1 10
+/file/read-journal /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/auto_frame.jou ()
+; --- step 3 ---
+solve/dual-time-iterate 1 10
+/file/read-journal /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/auto_frame.jou ()
+
+/file/confirm-overwrite? no
+file/write-case-data /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/elbow_hil_smoke.cas.h5
+exit yes

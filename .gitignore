@@ -1,0 +1,6 @@
+# Generated / build artifacts
+fluent_udf/frames/
+fluent_udf/libudf/
+fpga_firmware/build/
+*.tar.gz
+.venv/

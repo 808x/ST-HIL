@@ -1,0 +1,18 @@
+; Set inlet BCs and re-hook UDF profile.
+/file/set-tui-version "26.1"
+chdir /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf
+
+/file/confirm-overwrite? no
+
+file/read-case /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/elbow_hil_ready.cas.h5
+/define/user-defined/compiled-functions/load /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/libudf
+
+; velocity-inlet-5 (air, left horizontal): magnitude/dir, absolute, magnitude=0.001, direction (1,0)
+/define/boundary-conditions/velocity-inlet velocity-inlet-5 yes yes no 0.001 no 0 no 1 no 0 no 300 no no yes 5 10 no no 0
+
+; velocity-inlet-6 (helium, bottom vertical): magnitude/dir, absolute, magnitude=50, direction (0,1)
+; Keep UDF profile for he fraction.
+/define/boundary-conditions/velocity-inlet velocity-inlet-6 yes yes no 50 no 0 no 0 no 1 no 300 no no yes 5 10 no yes yes udf species_mass_fraction::libudf
+
+file/write-case /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive/fluent_udf/elbow_hil_ready.cas.h5
+exit yes

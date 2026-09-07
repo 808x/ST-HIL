@@ -1,12 +1,15 @@
-# ST-HIL 260803 Adaptive Checkpoint
+# ST-HIL: Species Transport Flow & Control Simulation
 
-This is a self-contained checkpoint of the ST-HIL Fluent-FPGA demo.  It
-contains everything needed to reproduce the adaptive-frame HIL run from a
-fresh checkout.
+- Automated hardware validation via serial console (UART), synchronizing fluid simulation states with FPGA logic.
+- Hardware-in-the-Loop (HIL) harness where outlet concentration thresholds dynamically actuate FPGA-mapped control valves (Tang Nano 20K).
+- Verified system timing, protocol response boundaries, and fail-safe logic under simulated environmental conditions.
+- **Adaptive frame-rate rendering:** skips PNG I/O when the outlet helium fraction and controller duty change fall below tunable thresholds (`STHIL_Y_THRESHOLD`, `STHIL_CMD_THRESHOLD`), avoiding simulation pauses for unnecessary frame dumps.
 
 ## Demo preview
 
-![Helium plume animation](fluent_udf/helium_smooth_constant.gif)
+![Helium concentration contour](fluent_udf/helium_smooth_constant.mp4)
+
+*Helium-air mixing elbow contour — outlet helium mass fraction is mapped to a 0–255 sensor byte (`SENSOR_MAX=0.2`, so `STHIL_SETPOINT=100` ≈ Y_he 7.8%, or ~39% of sensor saturation). A PI controller raises inlet valve duty when the filtered sensor exceeds the setpoint (slew-limited, clamped 0–255). The image shows full-open state (duty 255) because the outlet area-averaged sensor reads near zero at frame-decision time. The video looks jittery at the start because the adaptive frame-dropping threshold skips frames when change is low; it smooths out toward the final seconds as dynamics stabilize.*
 
 ## Pipeline overview
 
@@ -25,7 +28,7 @@ fallback or if the UDF is already compiled.
 ## Quick start
 
 ```bash
-cd /home/nulltype/Projects/ST-HIL/st-hil_260803-adaptive
+cd /home/nulltype/Projects/ST-HIL
 
 # 1. Set boundary conditions (air 0.001 m/s, helium 50 m/s by default)
 ./0_set-bc.sh
@@ -129,7 +132,7 @@ No command-line options.  Use environment variables above.
 ## Directory layout
 
 ```
-st-hil_260803-adaptive/
+st-hil/
 ├── 0_set-bc.sh
 ├── 1_hilflash.sh
 ├── 2_simulate.sh

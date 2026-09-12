@@ -140,22 +140,22 @@ st-hil/
 ├── HANDBOOK.md
 ├── restart_license_server.sh
 ├── fluent_udf/
-│   ├── species_uart_control.c      # UDF source
+│   ├── species_uart_control.c          # UDF source
 │   ├── generate_animation_journal.py
 │   ├── make_constant_framerate.py
-│   ├── elbow_hil_ready.cas.h5      # case with BCs + UDF hook
-│   ├── elbow.msh                   # original mesh
-│   ├── frames/                     # generated PNG frames
-│   └── libudf/                     # compiled UDF (created by --compile)
+│   ├── elbow_hil_ready.cas.h5          # case with BCs + UDF hook
+│   ├── elbow.msh                       # original mesh
+│   ├── frames/                         # generated PNG frames
+│   └── libudf/                         # compiled UDF (created by --compile)
 └── fpga_firmware/
-    ├── src/                        # Verilog source
+    ├── src/                            # Verilog source
     │   ├── species_fsm.v
     │   ├── top.v
     │   ├── uart_rx.v
     │   ├── uart_tx.v
     │   └── pins.cst
-    ├── build/                      # synthesis artifacts (created by 1_hilflash.sh)
-    └── test_fpga.py                # interactive UART test
+    ├── build/                          # synthesis artifacts (created by 1_hilflash.sh)
+    └── test_fpga.py                    # interactive UART test
 ```
 
 ## Notes
